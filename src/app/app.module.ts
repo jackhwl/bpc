@@ -20,7 +20,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 /*
  * Platform and Environment providers/directives/pipes
  */
-import { ENV_PROVIDERS } from './environment';
+import { ENV_PROVIDERS, firebaseConfig } from './environment';
 import { ROUTES } from './app.routes';
 // App is our top level component
 import { AppComponent } from './app.component';
@@ -40,7 +40,7 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 //import 'bootstrap/js/dist/dropdown';
 
 import 'firebase/firebase.js';
-
+import * as firebase from 'firebase';
 //import 'css-loader!bootstrap';
 
 import '../styles/styles.scss';
@@ -88,6 +88,7 @@ type StoreType = {
     CoreModule,
     FormsModule,
     HttpModule,
+    
     RouterModule.forRoot(ROUTES, {
       useHash: Boolean(history.pushState) === false,
       preloadingStrategy: PreloadAllModules

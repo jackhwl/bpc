@@ -70,3 +70,12 @@ export const decorateModuleRef = _decorateModuleRef;
 export const ENV_PROVIDERS = [
   ...PROVIDERS
 ];
+
+export const firebaseConfig = {
+  apiKey: "AIzaSyCFFDUhetWzzK-SB1AZCHhEwVpmtLh8ynA",
+  authDomain: "bpcsite-277ab.firebaseapp.com",
+  databaseURL: "https://bpcsite-277ab.firebaseio.com",
+  projectId: "bpcsite-277ab",
+  storageBucket: "bpcsite-277ab.appspot.com",
+  messagingSenderId: "536102140627"
+};

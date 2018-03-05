@@ -11,11 +11,12 @@ import { Router, ActivatedRoute } from '@angular/router';
 export class NavComponent implements OnInit {
     public bpcLogo = 'https://firebasestorage.googleapis.com/v0/b/bpcsite-277ab.appspot.com/o/images%2Fbanner.gif?alt=media&token=fde8562b-181e-4847-be4e-948796bf4245';
     //public url = 'http://localhost:3001';
+    loggedInUser: string;
 
     constructor(private userSVC: UserService, private menuSVC: MenuService, private route: ActivatedRoute, private router: Router) {}
   
     public ngOnInit() {
-
+        //this.loggedInUser = this.userSVC.loggedInUser;
     }
 
     changeRoute(menu) {

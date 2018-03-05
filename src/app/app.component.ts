@@ -6,7 +6,9 @@ import {
   OnInit,
   ViewEncapsulation
 } from '@angular/core';
+//import { Router, ActivatedRoute, NavigationEnd } from '@angular/router';
 import { AppState } from './app.service';
+//import { EnvService, UserService, MenuService } from './core/services';
 
 /**
  * App Component
@@ -26,10 +28,11 @@ export class AppComponent implements OnInit {
   public url = 'https://twitter.com/AngularClass';
 
   constructor(
-    public appState: AppState
+    public appState: AppState//, private userSVC: UserService, private menuSVC: MenuService, private route: ActivatedRoute
   ) {}
 
   public ngOnInit() {
+    //this.menuSVC.getTopNav(this.route.snapshot.params['menu'], this.route.snapshot.params['sub']);
     //console.log('Initial App State', this.appState.state);
   }
 

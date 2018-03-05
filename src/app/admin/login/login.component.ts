@@ -1,17 +1,24 @@
-import { Component } from '@angular/core';
-import { UserService } from '../../core/services';
-import { Router } from '@angular/router';
+import { Component, OnInit } from '@angular/core';
+import { Router, ActivatedRoute } from '@angular/router';
+import { UserService,MenuService } from '../../core/services';
+import { Menu } from '../../core/models/menu';
 
 @Component({
     templateUrl: './login.component.html',
     styleUrls:['./login.component.css']
 })
 
-export class LoginComponent { 
+export class LoginComponent implements OnInit { 
     email: string;
     password1: string;
-    constructor(private userSVC: UserService, private router: Router){}
+    constructor(private userSVC: UserService, private menuSVC: MenuService, private route: ActivatedRoute, private router: Router){}
 
+    public ngOnInit() {
+        if (!this.menuSVC.topMenu) {
+           this.menuSVC.getTopNav('admin', null);
+        }
+      }
+    
     login(){
         this.userSVC.login(this.email, this.password1);
         this.userSVC.verifyUser();

@@ -21,15 +21,22 @@ export class MenuService {
                         if (item.enable) tmp.push(childSnapshot.val());
                     })
                     this.topMenu = Object.keys(tmp).map(key => tmp[key]);
-                    if (routeMenu.toLowerCase() === 'home' && this.topMenu[0].name.toLowerCase() !== 'home') routeMenu = this.topMenu[0].name.toLowerCase();                    
-                    this.topMenu.forEach(m => {
-                      if (m.name.toLowerCase() === routeMenu.toLowerCase().replace(/-/g, ' ')) {
-                        this.currentMenu = m;
-                        this.getSubNav(m, routeSubMenu, true);
-                      } else {
-                        this.getSubNav(m, routeSubMenu, false);
-                      }
-                    });
+                    console.log(routeMenu);
+                    if (routeMenu.toLowerCase() === 'admin') {
+                        this.topMenu.forEach(m => {
+                            this.getSubNav(m, null, false);
+                        });
+                    } else {
+                        if (routeMenu.toLowerCase() === 'home' && this.topMenu[0].name.toLowerCase() !== 'home') routeMenu = this.topMenu[0].name.toLowerCase();                    
+                        this.topMenu.forEach(m => {
+                            if (m.name.toLowerCase() === routeMenu.toLowerCase().replace(/-/g, ' ')) {
+                                this.currentMenu = m;
+                                this.getSubNav(m, routeSubMenu, true);
+                            } else {
+                                this.getSubNav(m, routeSubMenu, false);
+                            }
+                        });
+                    }
             });
         }
     } 

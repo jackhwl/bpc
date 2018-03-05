@@ -9,11 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { SignUpComponent } from './signUp/sign-up.component';
 
 import { UserService } from '../core/services';
-import { BlogAdminService } from './adminShared/blog-admin.service';
 import { MenuAdminService } from './adminShared/menu-admin.service';
-
-import { BlogAdminComponent } from './blogAdmin/blog-admin.component';
-import { BlogAddComponent } from './blogAdd/blog-add.component';
 
 import { MenuAdminComponent } from './menuAdmin/menu-admin.component';
 import { MenuAddComponent } from './menuAdd/menu-add.component';
@@ -27,7 +23,6 @@ const AdminRoutes: Routes = [
         path: 'admin',
         component: AdminComponent,
         children: [
-            { path: 'blog-admin', component: BlogAdminComponent, canActivate: [UserService] },
             { path: 'menu-admin', component: MenuAdminComponent, canActivate: [UserService] },
             { path: 'sub-menu-admin', component: SubMenuAdminComponent, canActivate: [UserService] },
             { path: 'login', component: LoginComponent },
@@ -52,8 +47,6 @@ const AdminRoutes: Routes = [
         AdminMenuComponent,
         LoginComponent,
         SignUpComponent,
-        BlogAdminComponent,
-        BlogAddComponent,
         MenuAdminComponent,
         MenuAddComponent,
         MenuEditComponent,
@@ -62,7 +55,6 @@ const AdminRoutes: Routes = [
     ],
     providers: [
         UserService,
-        BlogAdminService,
         MenuAdminService
     ]
 })

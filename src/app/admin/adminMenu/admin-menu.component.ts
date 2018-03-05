@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { UserService } from '../../core/services';
-import { Router } from '@angular/router';
+import { UserService, MenuService } from '../../core/services';
+import { Router, ActivatedRoute } from '@angular/router';
 
 @Component({
     templateUrl: './admin-menu.component.html',
@@ -13,7 +13,8 @@ export class AdminMenuComponent implements OnInit {
     constructor( private userSVC: UserService, private router: Router ) {}
 
     ngOnInit(): void {
-        this.theUser = this.userSVC.loggedInUser;
+        
+        //this.theUser = this.userSVC.loggedInUser;
         //this.menuSVC.currentMenu = menu;
     }
 

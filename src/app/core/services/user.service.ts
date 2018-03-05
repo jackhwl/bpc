@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router, ActivatedRouteSnapshot, RouterStateSnapshot } from '@angular/router';
+import { firebaseConfig } from '../../environment';
 import * as firebase from 'firebase';
 
 @Injectable()
@@ -9,19 +10,12 @@ export class UserService implements CanActivate {
     authUser: any;
 
     constructor(private router: Router ) {
-        firebase.initializeApp({
-            apiKey: "AIzaSyCFFDUhetWzzK-SB1AZCHhEwVpmtLh8ynA",
-            authDomain: "bpcsite-277ab.firebaseapp.com",
-            databaseURL: "https://bpcsite-277ab.firebaseio.com",
-            projectId: "bpcsite-277ab",
-            storageBucket: "bpcsite-277ab.appspot.com",
-            messagingSenderId: "536102140627"
-        })
+        firebase.initializeApp(firebaseConfig)
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot ): boolean {
         let url: string = state.url;
-        return true;// this.verifyLogin(url);
+        return this.verifyLogin(url);
     }
 
     verifyLogin(url: string): boolean {
@@ -32,14 +26,14 @@ export class UserService implements CanActivate {
     }
 
     register(email: string, password: string){
-        firebase.auth().createUserWithEmailAndPassword(email, password)
-            .catch(function(error) {
-                console.log(error);
-                console.log(`${error.message} Please Try Again!`);
-            });
+        // firebase.auth().createUserWithEmailAndPassword(email, password)
+        //     .catch(function(error) {
+        //         alert(`${error.message} Please Try Again!`);
+        //     });
     }
 
     verifyUser() {
+        console.log('verifyUser');
         this.authUser = firebase.auth().currentUser;
 
         if (this.authUser) {
@@ -60,7 +54,7 @@ export class UserService implements CanActivate {
     logout() {
         this.userLoggedIn = false;
         firebase.auth().signOut().then(function(){
-            alert('Logged Out');
+            console.log('Logged Out');
         }, function(error) {
             alert('${error.message} Unabled to logout. Try again!');
         });
