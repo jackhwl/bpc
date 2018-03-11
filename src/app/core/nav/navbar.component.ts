@@ -9,11 +9,14 @@ import { Router, ActivatedRoute } from '@angular/router';
 })
 
 export class NavComponent implements OnInit {
-    public bpcLogo = 'https://firebasestorage.googleapis.com/v0/b/bpcsite-277ab.appspot.com/o/images%2Fbanner.gif?alt=media&token=fde8562b-181e-4847-be4e-948796bf4245';
+    public bpcLogo = 'https://firebasestorage.googleapis.com/v0/b/bpcsite-277ab.appspot.com/o/images%2Fbpclogo.jpg?alt=media&token=8d39ab91-c0f8-43f6-b637-e43cf80117fa';
     //public url = 'http://localhost:3001';
     loggedInUser: string;
-
-    constructor(private userSVC: UserService, private menuSVC: MenuService, private route: ActivatedRoute, private router: Router) {}
+    // public userSVC: UserService; 
+    // public menuSVC: MenuService;
+    constructor(private userSVC: UserService, private menuSVC: MenuService, private route: ActivatedRoute, private router: Router) {
+        //this.userSVC = userSV;
+    }
   
     public ngOnInit() {
         //this.loggedInUser = this.userSVC.loggedInUser;

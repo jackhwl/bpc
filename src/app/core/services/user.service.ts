@@ -10,7 +10,8 @@ export class UserService implements CanActivate {
     authUser: any;
 
     constructor(private router: Router ) {
-        firebase.initializeApp(firebaseConfig)
+        firebase.initializeApp(firebaseConfig);
+        //firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION);
     }
 
     canActivate(route: ActivatedRouteSnapshot, state: RouterStateSnapshot ): boolean {
@@ -45,10 +46,26 @@ export class UserService implements CanActivate {
     }
 
     login(loginEmail: string, loginPassword: string){
-        firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword)
-            .catch(function(error) {
-                alert('${error.message} Unable to login. Try Again!');
-            });
+        firebase.auth().setPersistence(firebase.auth.Auth.Persistence.SESSION)
+        .then(function() {
+          // Existing and future Auth states are now persisted in the current
+          // session only. Closing the window would clear any existing state even
+          // if a user forgets to sign out.
+          // ...
+          // New sign-in will be persisted with session persistence.
+          firebase.auth().signInWithEmailAndPassword(loginEmail, loginPassword)
+          .catch(function(error) {
+              alert('${error.message} Unable to login. Try Again!');
+          });
+        
+          //return firebase.auth().signInWithEmailAndPassword(email, password);
+        })
+        .catch(function(error) {
+          // Handle Errors here.
+          var errorCode = error.code;
+          var errorMessage = error.message;
+          console.error(error);
+        });
     }
 
     logout() {

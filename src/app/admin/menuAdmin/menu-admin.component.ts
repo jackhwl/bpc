@@ -3,7 +3,7 @@ import { UserService, MenuService } from '../../core/services';
 import { Router } from '@angular/router';
 import * as firebase from 'firebase';
 import { MenuAdminService } from '../adminShared/menu-admin.service';
-import { Menu } from '../../core/models/menu';
+import { Menu } from '../../core/models';
 
 
 @Component({

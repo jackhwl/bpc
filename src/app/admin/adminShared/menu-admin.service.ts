@@ -179,4 +179,15 @@ export class MenuAdminService {
         let contentRef = firebase.database().ref('content/').child(deleteMenu.id).remove();
     }
 
+    editMisc(type: string, content: string) {        
+        let dbRef = firebase.database().ref('misc/' + type + '/')
+            .update({
+                content: content
+            }, function(err) {
+                if (err) {
+                    console.error('error:', err);
+                }
+            }
+        );
+    }
 }

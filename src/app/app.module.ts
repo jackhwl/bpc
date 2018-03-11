@@ -1,19 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
-import {
-  NgModule,
-  ApplicationRef
-} from '@angular/core';
-import {
-  removeNgStyles,
-  createNewHosts,
-  createInputTransfer
-} from '@angularclass/hmr';
-import {
-  RouterModule,
-  PreloadAllModules
-} from '@angular/router';
+import { NgModule, ApplicationRef} from '@angular/core';
+import { removeNgStyles, createNewHosts, createInputTransfer} from '@angularclass/hmr';
+import { RouterModule, PreloadAllModules} from '@angular/router';
 
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
@@ -27,6 +17,8 @@ import { AppComponent } from './app.component';
 import { APP_RESOLVER_PROVIDERS } from './app.resolver';
 import { AppState, InternalStateType } from './app.service';
 import { HomeComponent } from './home';
+import { HeaderComponent } from './header';
+import { FooterComponent } from './footer';
 //import { BlogDetailComponent } from './blogDetail/blog-detail.component';
 import { AboutComponent } from './about';
 //import { WidgetComponent } from './widget';
@@ -39,8 +31,8 @@ import 'bootstrap/dist/js/bootstrap.min.js';
 //import 'popper.js';
 //import 'bootstrap/js/dist/dropdown';
 
-import 'firebase/firebase.js';
-import * as firebase from 'firebase';
+//import 'firebase/firebase.js';
+//import * as firebase from 'firebase';
 //import 'css-loader!bootstrap';
 
 import '../styles/styles.scss';
@@ -73,6 +65,8 @@ type StoreType = {
     AppComponent,
     AboutComponent,
     HomeComponent,
+    HeaderComponent,
+    FooterComponent,
     //BlogDetailComponent,
     //WidgetComponent,
     NoContentComponent,

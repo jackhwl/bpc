@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import * as firebase from 'firebase';
-import { Menu } from '../models/menu';
+import { Menu, Misc } from '../models';
 
 @Injectable()
 
@@ -9,6 +9,7 @@ export class MenuService {
     subMenu: Menu[];
     currentMenu: Menu;
     currentSubMenu: Menu;
+    misc: Misc;
 
     getTopNav(routeMenu: string, routeSubMenu: string = null){
         if (!this.topMenu) {
@@ -72,5 +73,14 @@ export class MenuService {
                     menu.content = contents.content;
             });
         }
-      } 
     }
+
+    getMisc() {
+        let contentRef = firebase.database().ref('misc/');
+        contentRef.once('value')
+            .then((snapshot) => {
+                this.misc = snapshot.val();
+            });
+    }
+  }
+
